@@ -121,12 +121,12 @@ const LayerPanel = ({ maze }) => {
 
   return (
     <div className="glass-panel layer-panel-container" style={{
-      position: 'absolute', right: '20px', top: '80px', width: '280px',
-      maxHeight: 'calc(100vh - 120px)', display: 'flex', flexDirection: 'column',
-      padding: '16px', gap: '16px', pointerEvents: 'auto', zIndex: 100, overflowY: 'auto'
+      position: 'absolute', right: '20px', top: '120px', width: '280px',
+      maxHeight: 'calc(100vh - 140px)', display: 'flex', flexDirection: 'column',
+      padding: '16px', gap: '16px', pointerEvents: 'auto', zIndex: 90, overflowY: 'auto'
     }}>
       <section>
-        <h3 style={headerStyle}>In World (Stack)</h3>
+        <h3 style={headerStyle}>Placed Layers</h3>
         <div style={listStyle}>{placedLayers.map(l => (l ? renderLayer(l, true) : null))}</div>
       </section>
 

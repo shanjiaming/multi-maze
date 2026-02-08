@@ -125,24 +125,16 @@ const MazeCanvas = ({ maze }) => {
       }
 
       // Draw End Point
-      ctx.fillStyle = '#22c55e';
-      ctx.beginPath();
-      ctx.arc(maze.endPos.x, maze.endPos.y, 15, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.font = 'bold 12px Inter';
-      ctx.fillStyle = 'white';
+      ctx.font = '32px Inter';
       ctx.textAlign = 'center';
-      ctx.fillText('E', maze.endPos.x, maze.endPos.y + 4);
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🏁', maze.endPos.x, maze.endPos.y);
 
-      // Draw Start Point (Fixed)
-      ctx.fillStyle = '#3b82f6'; // Blue for Start
-      ctx.beginPath();
-      ctx.arc(maze.startPos.x, maze.startPos.y, 15, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.font = 'bold 12px Inter';
-      ctx.fillStyle = 'white';
+      // Draw Start Point
+      ctx.font = '32px Inter';
       ctx.textAlign = 'center';
-      ctx.fillText('S', maze.startPos.x, maze.startPos.y + 4);
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🚩', maze.startPos.x, maze.startPos.y);
 
       // Draw Player (Dynamic) - Only in Play Mode
       if (gameState === 'playing') {

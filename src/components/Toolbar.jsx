@@ -97,7 +97,7 @@ const Toolbar = ({ maze, onHelp, onCommunity }) => {
       <button
         onClick={onCommunity}
         style={{ fontSize: '18px', padding: '8px', cursor: 'pointer' }}
-        title="Community Hub (Demo)"
+        title="Community Hub"
       >
         🌍
       </button>
@@ -110,11 +110,12 @@ const Toolbar = ({ maze, onHelp, onCommunity }) => {
         ❓
       </button>
 
+      {/* 
       <button
         onClick={() => {
           const url = maze.getShareableLink();
-          if (url.length > 20000) { // Browser limits vary, 20k is rough safe limit for modern browsers, but some old ones <2k
-            alert("Map is too complex/large to share via a simple link (Limit exceeded).\n\nPlease use the 'Save File' button instead!");
+          if (url.length > 20000) { 
+            alert("Map is too complex/large to share via a simple link (Limit exceeded).\\n\\nPlease use the 'Save File' button instead!");
           } else {
             navigator.clipboard.writeText(url);
             alert("Link copied to clipboard!");
@@ -143,6 +144,7 @@ const Toolbar = ({ maze, onHelp, onCommunity }) => {
           onChange={(e) => e.target.files[0] && maze.importMaze(e.target.files[0])}
         />
       </label>
+      */}
 
       <button
         onClick={() => setGameState(gameState === 'editing' ? 'playing' : 'editing')}

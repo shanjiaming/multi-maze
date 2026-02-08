@@ -3,8 +3,8 @@ import { supabase, isBackendReady } from '../supabaseClient';
 
 // MOCK DATA for demonstration (Fallback)
 const MOCK_COMMUNITY_MAPS = [
-  { id: '1', name: 'The Spiral (Demo)', author: 'DevTeam', likes: 42, date: '2023-10-01', description: 'A classic spiral maze.' },
-  { id: '2', name: 'Impossible Box (Demo)', author: 'SpeedRunner', likes: 120, date: '2023-10-05', description: 'Can you solve it?' },
+  { id: '1', name: 'The Spiral', author: 'DevTeam', likes: 42, date: '2023-10-01', description: 'A classic spiral maze.' },
+  { id: '2', name: 'Impossible Box', author: 'SpeedRunner', likes: 120, date: '2023-10-05', description: 'Can you solve it?' },
 ];
 
 const CommunityModal = ({ onClose, onImport, maze }) => {
@@ -119,7 +119,6 @@ const CommunityModal = ({ onClose, onImport, maze }) => {
         }}>
           <h2 style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
             🌍 Community Hub
-            {!connected && <span style={{ fontSize: '0.6em', background: 'var(--primary)', padding: '2px 8px', borderRadius: '10px' }}>DEMO MODE</span>}
           </h2>
           <button onClick={onClose} style={{ fontSize: '24px', opacity: 0.7 }}>&times;</button>
         </div>
