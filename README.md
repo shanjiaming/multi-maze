@@ -1,16 +1,51 @@
-# React + Vite
+# StackMaze
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StackMaze** is a creative puzzle game where you build and navigate multi-layered mazes.
+Unlike traditional 2D mazes, here you can place "blocks" on top of each other, creating vertical depth and complex navigational challenges.
 
-Currently, two official plugins are available:
+![StackMaze Screenshot](public/vite.svg) 
+*(Note: Replace with actual screenshot)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎮 How to Play
 
-## React Compiler
+1. **Goal**: Move the **Red Ball** from the **Red Flag (Start)** to the **Checkered Flag (End)**.
+2. **Controls**:
+   - **WASD / Arrows**: Move player.
+   - **1-9 keys**: Lift or Place blocks corresponding to their layer number.
+3. **Rules**:
+   - You cannot lift a block if you are standing on it.
+   - You cannot lift a block if another block is stacked on top of it.
+   - You must build your path dynamically!
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌍 Community Sharing
 
-## Expanding the ESLint configuration
+StackMaze features a built-in **Community Hub** powered by Supabase.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Browse Maps**: Click the 🌍 icon to see maps created by other players. Click "Play" to load them instantly.
+- **Upload**: Proud of your creation? Give it a name and author tag, then upload it for the world to solve!
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Vite
+- **Styling**: Plain CSS (Glassmorphism design)
+- **Backend / Database**: Supabase (PostgreSQL)
+- **Hosting**: Vercel
+
+## 🚀 Development
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shanjiaming/stackmaze.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run locally:
+   ```bash
+   npm run dev
+   ```
+
+## License
+
+MIT

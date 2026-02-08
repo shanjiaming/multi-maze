@@ -42,6 +42,30 @@ const CommunityModal = ({ onClose, onImport, maze }) => {
     setLoading(false);
   };
 
+  const handleLike = async (e, map) => {
+    e.stopPropagation();
+    if (!connected) return;
+
+    const key = `liked_map_${map.id}`;
+    if (localStorage.getItem(key)) {
+      return;
+    }
+
+    // Optimistic update
+    setMaps(prev => prev.map(m => m.id === map.id ? { ...m, likes: (m.likes || 0) + 1 } : m));
+    localStorage.setItem(key, 'true');
+
+    // DB Update
+    const { error } = await supabase
+      .from('maps')
+      .update({ likes: (map.likes || 0) + 1 })
+      .eq('id', map.id);
+
+    if (error) {
+      console.error("Like update failed", error);
+    }
+  };
+
   const handleUpload = async () => {
     if (!uploadName || !uploadAuthor) return alert("Please fill in all fields");
 
@@ -168,7 +192,17 @@ const CommunityModal = ({ onClose, onImport, maze }) => {
                       <h3 style={{ fontWeight: 'bold', marginBottom: '4px' }}>{map.name}</h3>
                       <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>by {map.author}</p>
                       <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '0.8rem' }}>❤️ {map.likes || 0}</span>
+                        <button
+                          onClick={(e) => handleLike(e, map)}
+                          style={{
+                            background: 'rgba(255,255,255,0.1)', border: 'none',
+                            padding: '4px 10px', borderRadius: '12px', cursor: 'pointer',
+                            fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px',
+                            opacity: localStorage.getItem(`liked_map_${map.id}`) ? 0.5 : 1
+                          }}
+                        >
+                          ❤️ {map.likes || 0}
+                        </button>
                         <button
                           onClick={() => {
                             if (!connected) return alert("Demo Mode: Cannot actually load this map!");

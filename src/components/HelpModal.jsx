@@ -51,15 +51,15 @@ const HelpModal = ({ onClose }) => {
           </section>
 
           <section>
-            <h3 style={{ color: '#fbbf24', marginBottom: '8px' }}>💾 Sharing</h3>
+            <h3 style={{ color: '#fbbf24', marginBottom: '8px' }}>🌍 Community Sharing</h3>
             <p style={{ lineHeight: '1.6', color: 'var(--text-muted)' }}>
-              Want to share your masterpiece?
+              Share your maze with the world!
+              <br /><br />
+              1. Click the <strong>Community Hub (🌍)</strong> button in the toolbar.
               <br />
-              1. Click the <strong>Save/Export (💾)</strong> button in the toolbar to download a <code>.json</code> file.
+              2. Select <strong>"Upload My Map"</strong> to publish your creation.
               <br />
-              2. Send this file to your friends.
-              <br />
-              3. They can use the <strong>Open (📂)</strong> button to load your maze and play it!
+              3. You can also browse and play maps created by other players!
             </p>
           </section>
 
