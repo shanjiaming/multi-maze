@@ -133,7 +133,7 @@ function App() {
           {/* Logo / Header */}
           <div className="app-header" style={{ position: 'absolute', top: '24px', left: '24px', pointerEvents: 'none' }}>
             <h1 style={{ fontSize: '1.5rem', fontWeight: '800', background: 'linear-gradient(to right, #6366f1, #a855f7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              MULTI-MAZE
+              STACKMAZE
             </h1>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>LAYERED PUZZLE BUILDER</p>
           </div>
