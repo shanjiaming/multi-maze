@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMaze } from './hooks/useMaze';
+import { supabase } from './supabaseClient';
 import MazeCanvas from './components/MazeCanvas';
 import Toolbar from './components/Toolbar';
 import LayerPanel from './components/LayerPanel';
@@ -13,6 +14,7 @@ function App() {
   const [showWin, setShowWin] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [showCommunity, setShowCommunity] = useState(false);
+  const [currentMapId, setCurrentMapId] = useState(null);
   const [toast, setToast] = useState(null); // { text, type: 'success' | 'error' }
 
   // Auto-dismiss toast
@@ -63,6 +65,21 @@ function App() {
       if (dist < 20) {
         setShowWin(true);
         maze.setGameState('editing');
+
+        // Increment Clear Count
+        if (currentMapId) {
+          (async () => {
+            try {
+              const { data } = await supabase.from('maps').select('clears').eq('id', currentMapId).single();
+              if (data) {
+                await supabase.from('maps').update({ clears: (data.clears || 0) + 1 }).eq('id', currentMapId);
+                console.log("Clear count updated!");
+              }
+            } catch (e) {
+              console.error("Failed to update clear count", e);
+            }
+          })();
+        }
       }
     }
   }, [maze.playerPos, maze.endPos, maze.gameState, maze.setGameState]);
@@ -164,10 +181,11 @@ function App() {
           <CommunityModal
             onClose={() => setShowCommunity(false)}
             maze={maze}
-            onImport={(data) => {
+            onImport={(data, mapId) => {
               const success = maze.loadMapData(data);
               if (success) {
                 setShowCommunity(false);
+                setCurrentMapId(mapId);
                 setToast({ text: "Map Loaded from Community!", type: 'success' });
               } else {
                 setToast({ text: "Failed to load map.", type: 'error' });

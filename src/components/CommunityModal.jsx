@@ -166,7 +166,9 @@ const CommunityModal = ({ onClose, onImport, maze }) => {
                         Map Preview
                       </div>
                       <h3 style={{ fontWeight: 'bold', marginBottom: '4px' }}>{map.name}</h3>
-                      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>by {map.author}</p>
+                      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                        by {map.author} <span style={{ marginLeft: '8px', color: '#fbbf24' }}>🏆 {map.clears || 0}</span>
+                      </p>
                       <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                         <button
                           onClick={() => {
@@ -177,7 +179,7 @@ const CommunityModal = ({ onClose, onImport, maze }) => {
                               // We need to expose a method or passing logic.
                               // Passed prop 'onImport' from App can be used?
                               // App needs to define handleImport.
-                              onImport(map.data);
+                              onImport(map.data, map.id);
                               onClose();
                             }
                           }}
