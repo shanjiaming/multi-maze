@@ -168,6 +168,7 @@ export const useMaze = () => {
   const loadMapData = useCallback((data) => {
     // Support legacy saves where playerPos was the start
     setStartPos(data.startPos || data.playerPos);
+    setPlayerPos(data.startPos || data.playerPos); // Reset player to start
     setEndPos(data.endPos);
     setPlacedIds(data.placedIds || []);
 
